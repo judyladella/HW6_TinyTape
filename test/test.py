@@ -100,4 +100,8 @@ async def test_project(dut):
             break
 
     assert saw_frame_done, "Did not see frame_done pulse after full frame"
+    # Optional: verify frame_done is a pulse (goes low again)
+    await RisingEdge(dut.clk)
+    row, col, pv, fd = unpack()
+    assert fd == 0, "frame_done should be a 1-cycle pulse"
     dut._log.info("PASS: Pixel scan controller behavior verified")

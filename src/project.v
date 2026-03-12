@@ -6,6 +6,10 @@
 `default_nettype none
 
 module tt_um_judyladella_pixel_scan (
+`ifdef USE_POWER_PINS
+    input VPWR,
+    input VGND,
+`endif
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,    // Dedicated outputs
     input  wire [7:0] uio_in,    // IOs: Input path

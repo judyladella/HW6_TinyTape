@@ -22,7 +22,7 @@ async def test_project(dut):
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 10)
     dut.rst_n.value = 1
-    await RisingEdge(dut.clk)
+    await ClockCycles(dut.clk, 5)
 
     # Check unused bidirectional IO behavior
     assert int(dut.uio_out.value) == 0, "uio_out must be 0"
